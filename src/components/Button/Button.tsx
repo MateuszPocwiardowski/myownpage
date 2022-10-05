@@ -1,8 +1,12 @@
 import { Button as MaterialUiButton } from '@mui/material'
 import { ButtonProps } from './Button.types'
 
-const Button = ({ type, ...props }: ButtonProps) => {
-	return <MaterialUiButton variant={type} {...props} />
+const Button = ({ type, children, onClick, sx, ...props }: ButtonProps) => {
+	return (
+		<MaterialUiButton variant={type} onClick={onClick} sx={sx} {...props}>
+			{children}
+		</MaterialUiButton>
+	)
 }
 
 export default Button

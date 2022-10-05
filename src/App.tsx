@@ -3,7 +3,7 @@ import { saveInStorage, readFromStorage } from './utils/useStorage/useStorage'
 
 const App = () => {
 	return (
-		<div className='App'>
+		<div>
 			<AuthForm />
 		</div>
 	)
