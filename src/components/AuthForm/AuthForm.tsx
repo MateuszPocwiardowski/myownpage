@@ -50,7 +50,6 @@ const AuthForm = () => {
 			<Button sx={styles.button} type='contained' onClick={submitHandler}>
 				Login
 			</Button>
-			<Text sx={styles.link}>Create new account</Text>
 		</Box>
 	)
 }

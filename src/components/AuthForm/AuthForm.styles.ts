@@ -30,10 +30,6 @@ const styles = {
 		py: 1,
 		borderRadius: 6,
 	},
-	link: {
-		pt: 4,
-		textAlign: 'center',
-	},
 } as const
 
 export default styles

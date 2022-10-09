@@ -1,11 +1,25 @@
-import AuthForm from './components/AuthForm/AuthForm'
-import { saveInStorage, readFromStorage } from './utils/useStorage/useStorage'
+import { Switch, Route } from 'react-router-dom'
+import Layout from './components/Layout/Layout'
+import HomePage from './pages/HomePage/HomePage'
+import AuthPage from './pages/AuthPage/AuthPage'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 const App = () => {
 	return (
-		<div>
-			<AuthForm />
-		</div>
+		<Layout>
+			<Switch>
+				<Route path='/' exact>
+					<HomePage />
+				</Route>
+				<Route path='/auth'>
+					<AuthPage />
+				</Route>
+				<Route path='/register'></Route>
+				<Route path='/profile'>
+					<ProfilePage />
+				</Route>
+			</Switch>
+		</Layout>
 	)
 }
 

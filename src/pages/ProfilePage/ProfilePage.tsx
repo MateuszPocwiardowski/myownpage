@@ -1,7 +1,11 @@
 // import UserProfile from '../../components/profile'
 
 const ProfilePage = () => {
-	// return <UserProfile />
+	return (
+		<section>
+			<h1>Profile page</h1>
+		</section>
+	)
 }
 
 export default ProfilePage
