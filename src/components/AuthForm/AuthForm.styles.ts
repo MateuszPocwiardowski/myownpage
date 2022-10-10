@@ -1,12 +1,12 @@
 const styles = {
 	form: {
-		maxWidth: '40rem',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'left',
 		alignItems: 'left',
 		textAlign: 'left',
-		p: 3,
+		px: '10%',
+		py: '10rem',
 	},
 	heading: {
 		fontWeight: 700,

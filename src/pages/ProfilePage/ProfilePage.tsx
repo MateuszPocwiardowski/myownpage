@@ -3,7 +3,7 @@
 const ProfilePage = () => {
 	return (
 		<section>
-			<h1>Profile page</h1>
+			<h2>Profile page</h2>
 		</section>
 	)
 }

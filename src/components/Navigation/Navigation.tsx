@@ -1,4 +1,4 @@
-import Button from '../Button/Button'
+import Button from '../common/Button/Button'
 import { Link } from 'react-router-dom'
 import styles from './Navigation.styles'
 
@@ -23,8 +23,8 @@ const NavItems = [
 const Navigation = () => {
 	return (
 		<header style={styles.header}>
-			<Link to='/'>
-				<div style={styles.logo}>React Auth</div>
+			<Link style={styles.logo} to='/'>
+				<div>React Auth</div>
 			</Link>
 			<nav>
 				<ul style={styles.navItems}>
@@ -32,11 +32,17 @@ const Navigation = () => {
 						if (item?.type === 'link') {
 							return (
 								<li style={styles.navItem}>
-									<Link to={item?.path}>{item?.name}</Link>
+									<Link style={styles.navLink} to={item?.path}>
+										{item?.name}
+									</Link>
 								</li>
 							)
 						} else if (item?.type === 'button') {
-							return <Button type='contained'>{item?.name}</Button>
+							return (
+								<Button sx={styles.navButton} type='contained'>
+									{item?.name}
+								</Button>
+							)
 						}
 					})}
 				</ul>

@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import { Box } from '@mui/material'
-import Input from '../Input/Input'
-import Text from '../Text/Text'
-import Button from '../Button/Button'
+import Input from '../common/Input/Input'
+import Text from '../common/Text/Text'
+import Button from '../common/Button/Button'
 import styles from './AuthForm.styles'
 
 const AuthForm = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const [] = useState(false)
 
 	const onChangeEmailHandler = (event: any) => {
 		setEmail(event?.target?.value)
@@ -19,6 +18,8 @@ const AuthForm = () => {
 	}
 
 	const submitHandler = () => {
+		setEmail('')
+		setPassword('')
 		console.log({ email, password })
 	}
 

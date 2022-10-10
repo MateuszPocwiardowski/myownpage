@@ -1,5 +1,3 @@
-import { fontWeight } from '@mui/system'
-
 const styles = {
 	header: {
 		width: '100%',
@@ -25,6 +23,14 @@ const styles = {
 		textTransform: 'uppercase',
 		color: 'white',
 		margin: '0 1rem',
+	},
+	navLink: {
+		color: 'white',
+		fontWeight: 700,
+		textDecoration: 'none',
+	},
+	navButton: {
+		ml: '1rem',
 	},
 } as const
 
