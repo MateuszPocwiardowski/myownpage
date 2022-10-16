@@ -35,6 +35,16 @@ const styles = {
 		textDecoration: 'none',
 		my: 1,
 	},
+	progressContainer: {
+		display: 'flex',
+		justifyContent: 'center',
+	},
+	progress: {
+		my: '10rem',
+	},
+	errorMessage: {
+		color: 'red',
+	},
 } as const
 
 export default styles

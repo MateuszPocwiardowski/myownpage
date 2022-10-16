@@ -3,14 +3,21 @@ import { Box, CircularProgress } from '@mui/material'
 import Input from '../common/Input/Input'
 import Text from '../common/Text/Text'
 import Button from '../common/Button/Button'
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
+import codeToText from '../../utils/codeToText'
+
 import styles from './AuthForm.styles'
 
 const AuthForm = () => {
 	const [isLogin, setIsLogin] = useState(true)
 	const [isLoading, setIsLoading] = useState(false)
+
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfrimPassword] = useState('')
+
+	const [errorEmail, setErrorEmail] = useState('')
+	const [errorPassword, setErrorPassword] = useState('')
 
 	const changeFormTypeHandler = () => {
 		setIsLogin(prevState => !prevState)
@@ -31,9 +38,15 @@ const AuthForm = () => {
 	const submitHandler = (event: any) => {
 		event?.preventDefault()
 
-		// validation
+		if (!isLogin && password !== confirmPassword) {
+			setErrorPassword('Passwords should be the same')
+			return
+		}
 
 		setIsLoading(true)
+		setErrorEmail('')
+		setErrorPassword('')
+
 		if (isLogin) {
 			console.log({ email, password })
 		} else {
@@ -51,15 +64,40 @@ const AuthForm = () => {
 				},
 			}).then(res => {
 				setIsLoading(false)
+
 				if (res.ok) {
 					setEmail('')
 					setPassword('')
 					setConfrimPassword('')
 				} else {
 					res.json().then(data => {
-						let errorMessage = 'Authentication failed'
-						if (data?.error?.message) {
-							errorMessage = data?.error?.message
+						const error = data?.error?.message
+						console.log(data)
+
+						switch (error) {
+							case 'EMAIL_EXISTS':
+							case 'MISSING_EMAIL': {
+								const errorMessage = capitalizeFirstLetter(codeToText(error).toLowerCase())
+								setErrorEmail(errorMessage)
+								break
+							}
+
+							case 'WEAK_PASSWORD : Password should be at least 6 characters': {
+								const errorMessage = capitalizeFirstLetter(error.slice(error.lastIndexOf(':') + 1))
+								setErrorPassword(errorMessage)
+								break
+							}
+
+							case 'MISSING_PASSWORD': {
+								const errorMessage = capitalizeFirstLetter(codeToText(error).toLowerCase())
+								setErrorPassword(errorMessage)
+								break
+							}
+
+							default: {
+								setErrorEmail('Invalid e-mail or password')
+								setErrorPassword('Invalid e-mail or password')
+							}
 						}
 					})
 				}
@@ -68,7 +106,11 @@ const AuthForm = () => {
 	}
 
 	if (isLoading) {
-		return <CircularProgress />
+		return (
+			<div style={styles.progressContainer}>
+				<CircularProgress sx={styles.progress} size={80} thickness={3} />
+			</div>
+		)
 	}
 
 	return (
@@ -86,6 +128,7 @@ const AuthForm = () => {
 				value={email}
 				onChange={onChangeEmailHandler}
 			/>
+			<Text sx={styles.errorMessage}>{errorEmail}</Text>
 			<Input
 				sx={styles.input}
 				required
@@ -96,6 +139,7 @@ const AuthForm = () => {
 				value={password}
 				onChange={onChangePasswordHandler}
 			/>
+			<Text sx={styles.errorMessage}>{errorPassword}</Text>
 			{!isLogin && (
 				<Input
 					sx={styles.input}

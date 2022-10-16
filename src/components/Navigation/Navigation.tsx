@@ -23,9 +23,9 @@ const NavItems = [
 const Navigation = () => {
 	return (
 		<header style={styles.header}>
-			<Link style={styles.logo} to='/'>
+			{/* <Link style={styles.logo} to='/'>
 				<div>React Auth</div>
-			</Link>
+			</Link> */}
 			<nav>
 				<ul style={styles.navItems}>
 					{NavItems.map(item => {
