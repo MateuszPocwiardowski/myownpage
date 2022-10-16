@@ -14,7 +14,6 @@ const App = () => {
 				<Route path='/auth'>
 					<AuthPage />
 				</Route>
-				<Route path='/register'></Route>
 				<Route path='/profile'>
 					<ProfilePage />
 				</Route>

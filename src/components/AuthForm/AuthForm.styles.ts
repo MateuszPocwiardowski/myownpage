@@ -30,6 +30,11 @@ const styles = {
 		py: 1,
 		borderRadius: 6,
 	},
+	link: {
+		color: 'black',
+		textDecoration: 'none',
+		my: 1,
+	},
 } as const
 
 export default styles

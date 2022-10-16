@@ -31,7 +31,7 @@ const Navigation = () => {
 					{NavItems.map(item => {
 						if (item?.type === 'link') {
 							return (
-								<li style={styles.navItem}>
+								<li key={item?.name} style={styles.navItem}>
 									<Link style={styles.navLink} to={item?.path}>
 										{item?.name}
 									</Link>
@@ -39,7 +39,7 @@ const Navigation = () => {
 							)
 						} else if (item?.type === 'button') {
 							return (
-								<Button sx={styles.navButton} type='contained'>
+								<Button key={item?.name} sx={styles.navButton} type='contained'>
 									{item?.name}
 								</Button>
 							)

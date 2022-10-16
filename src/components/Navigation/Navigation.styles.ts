@@ -31,6 +31,7 @@ const styles = {
 	},
 	navButton: {
 		ml: '1rem',
+		fontWeight: 700,
 	},
 } as const
 
