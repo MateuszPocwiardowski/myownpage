@@ -111,7 +111,10 @@ const AuthForm = () => {
 			})
 			.then(data => {
 				authCtx.login(data?.idToken)
-				saveInStorage({ key: 'token', value: data?.idToken })
+
+				if (!!data?.idToken) {
+					saveInStorage({ key: 'token', value: data?.idToken })
+				}
 			})
 	}
 

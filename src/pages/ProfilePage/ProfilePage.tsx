@@ -1,9 +1,9 @@
-// import UserProfile from '../../components/profile'
+import ProfileForm from '../../components/ProfileForm/ProfileForm'
 
 const ProfilePage = () => {
 	return (
 		<section>
-			<h2>Profile page</h2>
+			<ProfileForm />
 		</section>
 	)
 }
