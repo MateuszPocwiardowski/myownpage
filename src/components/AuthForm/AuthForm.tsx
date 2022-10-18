@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import AuthContext from '../../store/auth-context'
 import { Box, CircularProgress } from '@mui/material'
 import Input from '../common/Input/Input'
 import Text from '../common/Text/Text'
 import Button from '../common/Button/Button'
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
 import codeToText from '../../utils/codeToText'
+import { saveInStorage } from '../../utils/useStorage/useStorage'
 
 import styles from './AuthForm.styles'
 
@@ -18,6 +20,8 @@ const AuthForm = () => {
 
 	const [errorEmail, setErrorEmail] = useState('')
 	const [errorPassword, setErrorPassword] = useState('')
+
+	const authCtx = useContext(AuthContext)
 
 	const changeFormTypeHandler = () => {
 		setIsLogin(prevState => !prevState)
@@ -47,34 +51,36 @@ const AuthForm = () => {
 		setErrorEmail('')
 		setErrorPassword('')
 
-		if (isLogin) {
-			console.log({ email, password })
-		} else {
-			console.log({ email, password, confirmPassword })
+		const url = isLogin
+			? 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD_nVdW4TVKn-OX42lys2Pak3ayW2hubFI'
+			: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD_nVdW4TVKn-OX42lys2Pak3ayW2hubFI'
 
-			fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD_nVdW4TVKn-OX42lys2Pak3ayW2hubFI', {
-				method: 'POST',
-				body: JSON.stringify({
-					email: email,
-					password: password,
-					returnSecureToken: true,
-				}),
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			}).then(res => {
+		fetch(url, {
+			method: 'POST',
+			body: JSON.stringify({
+				email: email,
+				password: password,
+				returnSecureToken: true,
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then(res => {
 				setIsLoading(false)
 
 				if (res.ok) {
 					setEmail('')
 					setPassword('')
 					setConfrimPassword('')
+					return res.json()
 				} else {
 					res.json().then(data => {
 						const error = data?.error?.message
 						console.log(data)
 
 						switch (error) {
+							case 'INVALID_EMAIL':
 							case 'EMAIL_EXISTS':
 							case 'MISSING_EMAIL': {
 								const errorMessage = capitalizeFirstLetter(codeToText(error).toLowerCase())
@@ -88,6 +94,7 @@ const AuthForm = () => {
 								break
 							}
 
+							case 'INVALID_PASSWORD':
 							case 'MISSING_PASSWORD': {
 								const errorMessage = capitalizeFirstLetter(codeToText(error).toLowerCase())
 								setErrorPassword(errorMessage)
@@ -102,7 +109,10 @@ const AuthForm = () => {
 					})
 				}
 			})
-		}
+			.then(data => {
+				authCtx.login(data?.idToken)
+				saveInStorage({ key: 'token', value: data?.idToken })
+			})
 	}
 
 	if (isLoading) {

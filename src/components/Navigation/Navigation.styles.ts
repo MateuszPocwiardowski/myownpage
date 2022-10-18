@@ -14,6 +14,10 @@ const styles = {
 		fontWeight: 700,
 		textDecoration: 'none',
 	},
+	nav: {
+		display: 'flex',
+		alignItems: 'baseline',
+	},
 	navItems: {
 		listStyle: 'none',
 		display: 'flex',
