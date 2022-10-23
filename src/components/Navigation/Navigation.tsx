@@ -3,6 +3,7 @@ import AuthContext from '../../store/auth-context'
 import Button from '../common/Button/Button'
 import { Link } from 'react-router-dom'
 import styles from './Navigation.styles'
+import LogoDevIcon from '@mui/icons-material/LogoDev'
 
 const Navigation = () => {
 	const authCtx = useContext(AuthContext)
@@ -12,7 +13,7 @@ const Navigation = () => {
 	return (
 		<header style={styles.header}>
 			<Link style={styles.logo} to='/'>
-				<div>App</div>
+				<LogoDevIcon sx={styles.logoImg} />
 			</Link>
 			<nav style={styles.nav}>
 				<ul style={styles.navItems}>

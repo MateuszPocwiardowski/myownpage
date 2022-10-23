@@ -1,9 +1,9 @@
-import React from 'react'
+import styles from './HomePage.styles'
 
 const HomePage = () => {
 	return (
 		<section>
-			<h2>Home page</h2>
+			<h2 style={styles.title}>Home</h2>
 		</section>
 	)
 }

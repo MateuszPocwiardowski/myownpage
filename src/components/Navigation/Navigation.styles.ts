@@ -9,10 +9,13 @@ const styles = {
 		padding: '0 10%',
 	},
 	logo: {
-		fontSize: '2rem',
 		color: 'white',
 		fontWeight: 700,
+		textTransform: 'uppercase',
 		textDecoration: 'none',
+	},
+	logoImg: {
+		fontSize: '2rem',
 	},
 	nav: {
 		display: 'flex',
