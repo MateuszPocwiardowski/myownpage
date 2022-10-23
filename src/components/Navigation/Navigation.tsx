@@ -7,6 +7,8 @@ import styles from './Navigation.styles'
 const Navigation = () => {
 	const authCtx = useContext(AuthContext)
 
+	const { isLoggedIn, logout } = authCtx
+
 	return (
 		<header style={styles.header}>
 			<Link style={styles.logo} to='/'>
@@ -14,14 +16,14 @@ const Navigation = () => {
 			</Link>
 			<nav style={styles.nav}>
 				<ul style={styles.navItems}>
-					{!authCtx.isLoggedIn && (
+					{!isLoggedIn && (
 						<li style={styles.navItem}>
 							<Link style={styles.navLink} to='/auth'>
 								Login
 							</Link>
 						</li>
 					)}
-					{authCtx.isLoggedIn && (
+					{isLoggedIn && (
 						<li style={styles.navItem}>
 							<Link style={styles.navLink} to='/profile'>
 								Profile
@@ -29,8 +31,8 @@ const Navigation = () => {
 						</li>
 					)}
 				</ul>
-				{authCtx.isLoggedIn && (
-					<Button sx={styles.navButton} type='contained' onClick={authCtx.logout}>
+				{isLoggedIn && (
+					<Button sx={styles.navButton} type='contained' onClick={logout}>
 						Logout
 					</Button>
 				)}

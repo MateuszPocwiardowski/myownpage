@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import AuthContext from '../../store/auth-context'
 import { Box, CircularProgress } from '@mui/material'
 import Input from '../common/Input/Input'
@@ -6,11 +7,12 @@ import Text from '../common/Text/Text'
 import Button from '../common/Button/Button'
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
 import codeToText from '../../utils/codeToText'
-import { saveInStorage } from '../../utils/useStorage/useStorage'
 
 import styles from './AuthForm.styles'
 
 const AuthForm = () => {
+	const history = useHistory()
+
 	const [isLogin, setIsLogin] = useState(true)
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -110,11 +112,12 @@ const AuthForm = () => {
 				}
 			})
 			.then(data => {
-				authCtx.login(data?.idToken)
+				const expirationTime = new Date(new Date().getTime() + data?.expiresIn * 1000)
+				const expirationTimeISOString = expirationTime.toISOString()
 
-				if (!!data?.idToken) {
-					saveInStorage({ key: 'token', value: data?.idToken })
-				}
+				authCtx.login(data?.idToken, expirationTimeISOString)
+
+				history.replace('/')
 			})
 	}
 

@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import AuthContext from '../../store/auth-context'
 import { Box, CircularProgress } from '@mui/material'
 import Input from '../common/Input/Input'
@@ -10,6 +11,8 @@ import codeToText from '../../utils/codeToText'
 import styles from './ProfileForm.styles'
 
 const ProfileForm = () => {
+	const history = useHistory()
+
 	const [isLoading, setIsLoading] = useState(false)
 	const [password, setPassword] = useState('')
 	const [errorPassword, setErrorPassword] = useState('')
@@ -34,7 +37,7 @@ const ProfileForm = () => {
 			body: JSON.stringify({
 				idToken: token,
 				password: password,
-				returnSecureToken: true,
+				returnSecureToken: false,
 			}),
 			headers: {
 				'Content-Type': 'application/json',
@@ -44,7 +47,8 @@ const ProfileForm = () => {
 
 			if (res.ok) {
 				setPassword('')
-				return res.json()
+
+				history.replace('/')
 			} else {
 				res.json().then(data => {
 					const error = data?.error?.message
