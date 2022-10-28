@@ -5,8 +5,8 @@ import { Box, CircularProgress } from '@mui/material'
 import Input from '../common/Input/Input'
 import Text from '../common/Text/Text'
 import Button from '../common/Button/Button'
-import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter'
-import codeToText from '../../utils/codeToText'
+import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
+import codeToText from 'utils/codeToText'
 
 import styles from './AuthForm.styles'
 

@@ -1,4 +1,4 @@
-import { useState, createContext, ReactNode } from 'react'
+import { useState, useEffect, createContext, ReactNode } from 'react'
 import { removeFromStorage, getFromStorage, saveInStorage } from '../utils/useStorage/useStorage'
 import calculateRemaningTime from '../utils/calculateRemaningTime/index'
 import { AppContextInterface } from './auth-context.types'
@@ -14,6 +14,16 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	const initialToken = getFromStorage({ key: 'token' })
 
 	const [token, setToken] = useState(initialToken ?? '')
+
+	useEffect(() => {
+		const expirationTime = getFromStorage({ key: 'expirationTime' })
+
+		const remainingTime = calculateRemaningTime(expirationTime ?? '')
+
+		if (remainingTime < 0) {
+			logoutHandler()
+		}
+	}, [])
 
 	const logoutHandler = () => {
 		setToken('')

@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import AuthContext from '../../store/auth-context'
-import Button from '../common/Button/Button'
-import { Link } from 'react-router-dom'
-import styles from './Navigation.styles'
 import LogoDevIcon from '@mui/icons-material/LogoDev'
+import { Link } from 'react-router-dom'
+import Button from '../common/Button/Button'
+import styles from './Navigation.styles'
 
 const Navigation = () => {
 	const authCtx = useContext(AuthContext)
