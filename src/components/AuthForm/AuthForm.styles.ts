@@ -1,12 +1,8 @@
 const styles = {
 	form: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'left',
-		alignItems: 'left',
-		textAlign: 'left',
-		px: '10%',
-		py: '10rem',
+		maxWidth: '1400px',
+		margin: '0 auto',
+		padding: '1rem',
 	},
 	heading: {
 		fontWeight: 700,
@@ -24,6 +20,7 @@ const styles = {
 		},
 	},
 	button: {
+		width: '100%',
 		fontWeight: 700,
 		fontSize: 20,
 		my: 1,

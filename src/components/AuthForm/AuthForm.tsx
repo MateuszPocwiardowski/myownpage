@@ -7,6 +7,7 @@ import Text from 'components/common/Text/Text'
 import Button from 'components/common/Button/Button'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import codeToText from 'utils/codeToText'
+import { URLS, ERRORS } from 'constants/index'
 
 import styles from './AuthForm.styles'
 
@@ -53,11 +54,7 @@ const AuthForm = () => {
 		setErrorEmail('')
 		setErrorPassword('')
 
-		const url = isLogin
-			? 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD_nVdW4TVKn-OX42lys2Pak3ayW2hubFI'
-			: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD_nVdW4TVKn-OX42lys2Pak3ayW2hubFI'
-
-		fetch(url, {
+		fetch(isLogin ? URLS.signIn : URLS.signUp, {
 			method: 'POST',
 			body: JSON.stringify({
 				email: email,
@@ -82,22 +79,22 @@ const AuthForm = () => {
 						console.log(data)
 
 						switch (error) {
-							case 'INVALID_EMAIL':
-							case 'EMAIL_EXISTS':
-							case 'MISSING_EMAIL': {
+							case ERRORS.invalidEmail:
+							case ERRORS.emailExists:
+							case ERRORS.missingEmail: {
 								const errorMessage = capitalizeFirstLetter(codeToText(error).toLowerCase())
 								setErrorEmail(errorMessage)
 								break
 							}
 
-							case 'WEAK_PASSWORD : Password should be at least 6 characters': {
+							case ERRORS.weakPassword: {
 								const errorMessage = capitalizeFirstLetter(error.slice(error.lastIndexOf(':') + 1))
 								setErrorPassword(errorMessage)
 								break
 							}
 
-							case 'INVALID_PASSWORD':
-							case 'MISSING_PASSWORD': {
+							case ERRORS.invalidPassword:
+							case ERRORS.missingPassword: {
 								const errorMessage = capitalizeFirstLetter(codeToText(error).toLowerCase())
 								setErrorPassword(errorMessage)
 								break

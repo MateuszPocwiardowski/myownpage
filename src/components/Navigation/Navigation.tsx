@@ -11,33 +11,35 @@ const Navigation = () => {
 	const { isLoggedIn, logout } = authCtx
 
 	return (
-		<header style={styles.header}>
-			<Link style={styles.logo} to='/'>
-				<LogoDevIcon sx={styles.logoImg} />
-			</Link>
-			<nav style={styles.nav}>
-				<ul style={styles.navItems}>
-					{!isLoggedIn && (
-						<li style={styles.navItem}>
-							<Link style={styles.navLink} to='/auth'>
-								Login
-							</Link>
-						</li>
-					)}
+		<header style={styles.headerContainer}>
+			<div style={styles.header}>
+				<Link style={styles.logo} to='/'>
+					<LogoDevIcon sx={styles.logoImg} />
+				</Link>
+				<nav style={styles.nav}>
+					<ul style={styles.navItems}>
+						{!isLoggedIn && (
+							<li style={styles.navItem}>
+								<Link style={styles.navLink} to='/auth'>
+									Login
+								</Link>
+							</li>
+						)}
+						{isLoggedIn && (
+							<li style={styles.navItem}>
+								<Link style={styles.navLink} to='/profile'>
+									Profile
+								</Link>
+							</li>
+						)}
+					</ul>
 					{isLoggedIn && (
-						<li style={styles.navItem}>
-							<Link style={styles.navLink} to='/profile'>
-								Profile
-							</Link>
-						</li>
+						<Button sx={styles.navButton} type='contained' onClick={logout}>
+							Logout
+						</Button>
 					)}
-				</ul>
-				{isLoggedIn && (
-					<Button sx={styles.navButton} type='contained' onClick={logout}>
-						Logout
-					</Button>
-				)}
-			</nav>
+				</nav>
+			</div>
 		</header>
 	)
 }

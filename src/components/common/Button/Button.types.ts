@@ -1,5 +1,5 @@
+import { MouseEventHandler } from 'react'
 import { SxProps, Theme } from '@mui/material/styles'
-import React, { MouseEventHandler } from 'react'
 
 export type ButtonProps = {
 	disabled?: boolean

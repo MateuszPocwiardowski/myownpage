@@ -7,6 +7,7 @@ import Text from 'components/common/Text/Text'
 import Button from 'components/common/Button/Button'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import codeToText from 'utils/codeToText'
+import { URLS, ERRORS } from 'constants/index'
 
 import styles from './ProfileForm.styles'
 
@@ -30,9 +31,7 @@ const ProfileForm = () => {
 		setIsLoading(true)
 		setErrorPassword('')
 
-		const url = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyD_nVdW4TVKn-OX42lys2Pak3ayW2hubFI'
-
-		fetch(url, {
+		fetch(URLS.updatePassword, {
 			method: 'POST',
 			body: JSON.stringify({
 				idToken: token,
@@ -55,13 +54,13 @@ const ProfileForm = () => {
 					console.log(data)
 
 					switch (error) {
-						case 'WEAK_PASSWORD : Password should be at least 6 characters': {
+						case ERRORS.weakPassword: {
 							const errorMessage = capitalizeFirstLetter(error.slice(error.lastIndexOf(':') + 1))
 							setErrorPassword(errorMessage)
 							break
 						}
-						case 'INVALID_ID_TOKEN':
-						case 'TOKEN_EXPIRED': {
+						case ERRORS.invalidIdToken:
+						case ERRORS.tokenExpired: {
 							const errorMessage = capitalizeFirstLetter(codeToText(error).toLowerCase())
 							setErrorPassword(errorMessage)
 							break

@@ -1,12 +1,15 @@
 const styles = {
-	header: {
+	headerContainer: {
 		width: '100%',
-		height: '5rem',
+		backgroundColor: 'gray',
+	},
+	header: {
+		maxWidth: '1400px',
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		backgroundColor: 'gray',
-		padding: '0 10%',
+		margin: '0 auto',
+		padding: '1rem',
 	},
 	logo: {
 		color: 'white',
