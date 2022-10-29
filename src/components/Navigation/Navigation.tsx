@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import AuthContext from '../../store/auth-context'
-import LogoDevIcon from '@mui/icons-material/LogoDev'
+import AuthContext from 'store/auth-context'
 import { Link } from 'react-router-dom'
-import Button from '../common/Button/Button'
+import LogoDevIcon from '@mui/icons-material/LogoDev'
+import Button from 'components/common/Button/Button'
 import styles from './Navigation.styles'
 
 const Navigation = () => {
