@@ -1,4 +1,9 @@
 const styles = {
+	newArticle: {
+		left: '50%',
+		my: 2,
+		transform: 'translateX(-50%)',
+	},
 	heading: {
 		fontWeight: 700,
 		my: 1,
@@ -22,6 +27,7 @@ const styles = {
 	button: {
 		alignSelf: 'flex-end',
 		color: 'black',
+		fontSize: '16px',
 		mt: '1rem',
 	},
 } as const

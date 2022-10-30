@@ -1,10 +1,10 @@
 import Text from 'components/common/Text/Text'
 import Button from 'components/common/Button/Button'
-import styles from './Articles.styles'
+import styles from '../Articles.styles'
 
-const Article = ({ id, title, entry }: { id: number; title: string; entry: string }) => {
+const DetailsArticle = ({ id, title, entry }: { id: number; title: string; entry: string }) => {
 	return (
-		<div style={styles.article}>
+		<div key={id} style={styles.article}>
 			<Text type='h5' sx={styles.title}>
 				{title}
 			</Text>
@@ -16,4 +16,4 @@ const Article = ({ id, title, entry }: { id: number; title: string; entry: strin
 	)
 }
 
-export default Article
+export default DetailsArticle
