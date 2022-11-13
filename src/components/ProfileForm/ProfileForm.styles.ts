@@ -1,8 +1,12 @@
 const styles = {
 	form: {
-		maxWidth: '1400px',
+		maxWidth: '600px',
 		margin: '0 auto',
 		padding: '1rem',
+
+		'@media (min-width: 600px)': {
+			margin: '5rem auto',
+		},
 	},
 	heading: {
 		fontWeight: 700,
