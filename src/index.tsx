@@ -3,13 +3,16 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
 import { AuthContextProvider } from './store/auth-context'
+import { UIContextProvider } from './store/ui-context'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
 	<AuthContextProvider>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+		<UIContextProvider>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</UIContextProvider>
 	</AuthContextProvider>
 )

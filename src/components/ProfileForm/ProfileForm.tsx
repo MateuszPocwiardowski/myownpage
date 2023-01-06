@@ -36,7 +36,7 @@ const ProfileForm = () => {
 			body: JSON.stringify({
 				idToken: token,
 				password: password,
-				returnSecureToken: false,
+				returnSecureToken: true,
 			}),
 			headers: {
 				'Content-Type': 'application/json',
@@ -46,6 +46,15 @@ const ProfileForm = () => {
 
 			if (res.ok) {
 				setPassword('')
+
+				res.json().then(data => {
+					const { idToken, expiresIn } = data
+
+					const expirationTime = new Date(new Date().getTime() + expiresIn * 1000)
+					const expirationTimeISOString = expirationTime.toISOString()
+
+					authCtx.login(idToken, expirationTimeISOString)
+				})
 
 				history.replace('/')
 			} else {

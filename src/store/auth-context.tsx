@@ -1,9 +1,9 @@
 import { useState, useEffect, createContext, ReactNode } from 'react'
 import { removeFromStorage, getFromStorage, saveInStorage } from '../utils/useStorage/useStorage'
 import calculateRemaningTime from '../utils/calculateRemaningTime/index'
-import { AppContextInterface } from './auth-context.types'
+import { AuthContextInterface } from './store.types'
 
-const AuthContext = createContext<AppContextInterface>({
+const AuthContext = createContext<AuthContextInterface>({
 	token: '',
 	isLoggedIn: false,
 	login: () => {},
