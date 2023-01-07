@@ -6,7 +6,7 @@ export type ButtonProps = {
 	type: 'text' | 'contained' | 'outlined'
 	color?: 'success' | 'error'
 	href?: string
-	children: string
+	children: any
 	sx?: SxProps<Theme>
 	onClick?: MouseEventHandler<HTMLButtonElement>
 }

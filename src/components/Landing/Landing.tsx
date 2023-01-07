@@ -4,7 +4,7 @@ import './Landing.scss'
 const Landing = () => {
 	return (
 		<div className='landing'>
-			<h3 className='landing__title	'>Helping people make the world a better place through quality software.</h3>
+			<h4 className='landing__title'>Helping people make the world a better place through quality software.</h4>
 			<Button type='contained' onClick={() => {}}>
 				Learn more
 			</Button>

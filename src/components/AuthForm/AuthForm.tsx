@@ -8,8 +8,7 @@ import Button from 'components/common/Button/Button'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import codeToText from 'utils/codeToText'
 import { URLS, ERRORS } from 'constants/index'
-
-import styles from './AuthForm.styles'
+import './AuthForm.scss'
 
 const AuthForm = () => {
 	const history = useHistory()
@@ -120,20 +119,36 @@ const AuthForm = () => {
 
 	if (isLoading) {
 		return (
-			<div style={styles.progressContainer}>
-				<CircularProgress sx={styles.progress} size={80} thickness={3} />
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
+				<CircularProgress sx={{ marginY: '10rem' }} size={80} thickness={3} />
 			</div>
 		)
 	}
 
 	return (
-		<Box sx={styles.form} component='form'>
-			<Text type='h4' sx={styles.heading}>
+		<Box className='form' component='form'>
+			<Text type='h4' sx={{ fontSize: '2rem', fontWeight: 400, marginBottom: '1rem', color: '#fff' }}>
 				{isLogin ? 'Login' : 'Register'}
 			</Text>
-			<Text sx={styles.caption}>{isLogin ? 'Lorem ipsum dolor sit amet.' : 'Lorem ipsum dolor sit amet.'}</Text>
+			<Text sx={{ marginBottom: '1rem', color: '#fff' }}>
+				{isLogin ? 'Lorem ipsum dolor sit amet.' : 'Lorem ipsum dolor sit amet.'}
+			</Text>
 			<Input
-				sx={styles.input}
+				sx={{
+					width: '100%',
+					backgroundColor: '#fff',
+					borderColor: '1f2028',
+					borderRadius: '3rem',
+					color: '#1f2028',
+
+					fieldset: {
+						legend: {
+							span: {
+								color: '#fff',
+							},
+						},
+					},
+				}}
 				required
 				id='e-mail'
 				label='E-mail'
@@ -141,9 +156,23 @@ const AuthForm = () => {
 				value={email}
 				onChange={onChangeEmailHandler}
 			/>
-			<Text sx={styles.errorMessage}>{errorEmail}</Text>
+			<Text sx={{ color: 'red' }}>{errorEmail}</Text>
 			<Input
-				sx={styles.input}
+				sx={{
+					width: '100%',
+					backgroundColor: '#fff',
+					borderColor: '1f2028',
+					borderRadius: '3rem',
+					color: '#1f2028',
+
+					fieldset: {
+						legend: {
+							span: {
+								color: '#fff',
+							},
+						},
+					},
+				}}
 				required
 				id='password'
 				label='Password'
@@ -152,10 +181,24 @@ const AuthForm = () => {
 				value={password}
 				onChange={onChangePasswordHandler}
 			/>
-			<Text sx={styles.errorMessage}>{errorPassword}</Text>
+			<Text sx={{ color: 'red' }}>{errorPassword}</Text>
 			{!isLogin && (
 				<Input
-					sx={styles.input}
+					sx={{
+						width: '100%',
+						backgroundColor: '#fff',
+						borderColor: '1f2028',
+						borderRadius: '3rem',
+						color: '#1f2028',
+
+						fieldset: {
+							legend: {
+								span: {
+									color: '#fff',
+								},
+							},
+						},
+					}}
 					required
 					id='password-confirmation'
 					label='Confirm password'
@@ -165,10 +208,10 @@ const AuthForm = () => {
 					onChange={onChangeConfirmPasswordHandler}
 				/>
 			)}
-			<Button sx={styles.button} type='contained' onClick={submitHandler}>
+			<Button type='contained' onClick={submitHandler}>
 				{isLogin ? 'Login' : 'Register'}
 			</Button>
-			<Button sx={styles.link} type='text' onClick={changeFormTypeHandler}>
+			<Button sx={{ color: '#fff', textDecoration: 'none' }} type='text' onClick={changeFormTypeHandler}>
 				{isLogin ? 'Create new account' : 'Login to exisiting account'}
 			</Button>
 		</Box>

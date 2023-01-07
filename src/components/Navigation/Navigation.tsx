@@ -36,22 +36,22 @@ const Navigation = () => {
 			<div className={isOpened ? 'header__outer header__outer--opened' : 'header__outer header__outer--closed'}>
 				{isMobile && isOpened && (
 					<nav className='navigation'>
-						<ul className='navigation__items'>
+						<div className='navigation__items'>
 							{!isLoggedIn && (
-								<li className='navigation__item'>
+								<Button type='contained' onClick={() => {}}>
 									<Link className='item__link' to='/auth' onClick={closeNavigationHandleClick}>
 										Login
 									</Link>
-								</li>
+								</Button>
 							)}
 							{isLoggedIn && (
-								<li className='navigation__item'>
+								<span className='navigation__item'>
 									<Link className='item__link' to='/profile' onClick={closeNavigationHandleClick}>
 										Profile
 									</Link>
-								</li>
+								</span>
 							)}
-						</ul>
+						</div>
 						{isLoggedIn && (
 							<Button
 								sx={{ fontWeight: '700' }}
