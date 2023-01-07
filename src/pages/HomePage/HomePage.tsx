@@ -1,9 +1,9 @@
-import Articles from 'components/Articles/Articles'
+import Landing from '../../components/Landing/Landing'
 
 const HomePage = () => {
 	return (
 		<section>
-			<Articles />
+			<Landing />
 		</section>
 	)
 }

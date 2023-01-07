@@ -1,3 +1,5 @@
+@import './styles/colours.scss';
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,6 +7,6 @@
 }
 
 body {
-	background-color: whitesmoke;
+	background-color: $color-gray-900;
 	font-family: 'Montserrat', sans-serif;
 }

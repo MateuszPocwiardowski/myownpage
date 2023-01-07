@@ -15,8 +15,12 @@ const Navigation = () => {
 
 	const isMobile = windowSize.width <= 768
 
-	const handleClick = () => {
+	const onBurgerBtnHandleClick = () => {
 		setIsOpened(prevState => !prevState)
+	}
+
+	const closeNavigationHandleClick = () => {
+		setIsOpened(false)
 	}
 
 	useEffect(() => {
@@ -24,7 +28,6 @@ const Navigation = () => {
 			setWindowSize({ height: window.innerHeight, width: window.innerWidth })
 			setIsOpened(false)
 		}
-
 		window.addEventListener('resize', handleResize)
 	}, [])
 
@@ -36,14 +39,14 @@ const Navigation = () => {
 						<ul className='navigation__items'>
 							{!isLoggedIn && (
 								<li className='navigation__item'>
-									<Link className='item__link' to='/auth' onClick={handleClick}>
+									<Link className='item__link' to='/auth' onClick={closeNavigationHandleClick}>
 										Login
 									</Link>
 								</li>
 							)}
 							{isLoggedIn && (
 								<li className='navigation__item'>
-									<Link className='item__link' to='/profile' onClick={handleClick}>
+									<Link className='item__link' to='/profile' onClick={closeNavigationHandleClick}>
 										Profile
 									</Link>
 								</li>
@@ -54,7 +57,7 @@ const Navigation = () => {
 								sx={{ fontWeight: '700' }}
 								type='contained'
 								onClick={() => {
-									handleClick()
+									closeNavigationHandleClick()
 									logout()
 								}}>
 								Logout
@@ -65,11 +68,11 @@ const Navigation = () => {
 			</div>
 
 			<div className='header__inner'>
-				<Link className='logo' to='/' onClick={handleClick}>
+				<Link className='logo' to='/' onClick={closeNavigationHandleClick}>
 					<LogoDevIcon sx={{ fontSize: '2rem' }} />
 				</Link>
 
-				{isMobile && <BurgerBtn onClick={handleClick} isOpened={isOpened} />}
+				{isMobile && <BurgerBtn onClick={onBurgerBtnHandleClick} isOpened={isOpened} />}
 
 				{!isMobile && (
 					<nav className='navigation'>
