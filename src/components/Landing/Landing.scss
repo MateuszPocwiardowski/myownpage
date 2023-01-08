@@ -1,3 +1,4 @@
+@import '../../styles/font.scss';
 @import '../../styles/colors.scss';
 
 .landing {
@@ -9,7 +10,8 @@
 
 	&__title {
 		color: $color-white;
-		font-size: 2rem;
+		font-size: $font-size-big;
+		font-family: $font-main;
 		font-weight: 400;
 		line-height: 1.25;
 	}

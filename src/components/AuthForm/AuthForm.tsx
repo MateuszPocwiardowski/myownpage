@@ -127,7 +127,7 @@ const AuthForm = () => {
 
 	return (
 		<Box className='form' component='form'>
-			<Text type='h4' sx={{ fontSize: '2rem', fontWeight: 400, marginBottom: '1rem', color: '#fff' }}>
+			<Text type='h4' sx={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '1rem', color: '#fff' }}>
 				{isLogin ? 'Login' : 'Register'}
 			</Text>
 			<Text sx={{ marginBottom: '1rem', color: '#fff' }}>
@@ -136,18 +136,7 @@ const AuthForm = () => {
 			<Input
 				sx={{
 					width: '100%',
-					backgroundColor: '#fff',
-					borderColor: '1f2028',
 					borderRadius: '3rem',
-					color: '#1f2028',
-
-					fieldset: {
-						legend: {
-							span: {
-								color: '#fff',
-							},
-						},
-					},
 				}}
 				required
 				id='e-mail'
@@ -160,18 +149,7 @@ const AuthForm = () => {
 			<Input
 				sx={{
 					width: '100%',
-					backgroundColor: '#fff',
-					borderColor: '1f2028',
 					borderRadius: '3rem',
-					color: '#1f2028',
-
-					fieldset: {
-						legend: {
-							span: {
-								color: '#fff',
-							},
-						},
-					},
 				}}
 				required
 				id='password'
@@ -186,18 +164,7 @@ const AuthForm = () => {
 				<Input
 					sx={{
 						width: '100%',
-						backgroundColor: '#fff',
-						borderColor: '1f2028',
 						borderRadius: '3rem',
-						color: '#1f2028',
-
-						fieldset: {
-							legend: {
-								span: {
-									color: '#fff',
-								},
-							},
-						},
 					}}
 					required
 					id='password-confirmation'
@@ -208,7 +175,7 @@ const AuthForm = () => {
 					onChange={onChangeConfirmPasswordHandler}
 				/>
 			)}
-			<Button type='contained' onClick={submitHandler}>
+			<Button sx={{ marginTop: '.5rem ' }} type='contained' onClick={submitHandler}>
 				{isLogin ? 'Login' : 'Register'}
 			</Button>
 			<Button sx={{ color: '#fff', textDecoration: 'none' }} type='text' onClick={changeFormTypeHandler}>

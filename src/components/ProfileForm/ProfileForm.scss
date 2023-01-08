@@ -1,0 +1,17 @@
+.form {
+	max-width: 600px;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	row-gap: .5rem;
+
+	&__title {
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	@media (min-width: 600px) {
+		margin: 5rem auto;
+	}
+}

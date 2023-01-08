@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import AuthContext from 'store/auth-context'
 import { Link } from 'react-router-dom'
-import LogoDevIcon from '@mui/icons-material/LogoDev'
+import Text from 'components/common/Text/Text'
 import Button from 'components/common/Button/Button'
 import BurgerBtn from 'components/common/BurgerBtn/BurgerBtn'
 import './Navigation.scss'
@@ -69,7 +69,9 @@ const Navigation = () => {
 
 			<div className='header__inner'>
 				<Link className='logo' to='/' onClick={closeNavigationHandleClick}>
-					<LogoDevIcon sx={{ fontSize: '2rem' }} />
+					<Text type='h1' sx={{ textTransform: 'none', fontSize: '1.5rem' }}>
+						Mateusz Pocwiardowski
+					</Text>
 				</Link>
 
 				{isMobile && <BurgerBtn onClick={onBurgerBtnHandleClick} isOpened={isOpened} />}

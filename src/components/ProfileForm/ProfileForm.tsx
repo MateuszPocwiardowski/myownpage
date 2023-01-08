@@ -89,13 +89,16 @@ const ProfileForm = () => {
 	}
 
 	return (
-		<Box sx={styles.form} component='form'>
-			<Text type='h4' sx={styles.heading}>
+		<Box className='form' component='form'>
+			<Text type='h4' sx={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '1rem', color: '#fff' }}>
 				Change password
 			</Text>
-			<Text sx={styles.caption}>Lorem ipsum dolor sit amet.</Text>
+			<Text sx={{ marginBottom: '1rem', color: '#fff' }}>Lorem ipsum dolor sit amet.</Text>
 			<Input
-				sx={styles.input}
+				sx={{
+					width: '100%',
+					borderRadius: '3rem',
+				}}
 				required
 				id='password'
 				label='Password'
@@ -104,8 +107,8 @@ const ProfileForm = () => {
 				value={password}
 				onChange={onChangePasswordHandler}
 			/>
-			<Text sx={styles.errorMessage}>{errorPassword}</Text>
-			<Button sx={styles.button} type='contained' onClick={submitHandler}>
+			<Text sx={{ color: 'red' }}>{errorPassword}</Text>
+			<Button type='contained' onClick={submitHandler}>
 				Change password
 			</Button>
 		</Box>
