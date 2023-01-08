@@ -37,13 +37,20 @@ const Navigation = () => {
 				{isMobile && isOpened && (
 					<nav className='navigation'>
 						<div className='navigation__items'>
+							<span className='navigation__item'>
+								<Link className='item__link' to='/blog' onClick={closeNavigationHandleClick}>
+									Blog
+								</Link>
+							</span>
+
 							{!isLoggedIn && (
-								<Button type='contained' onClick={() => {}}>
+								<Button sx={{ fontWeight: '700', marginTop: '1rem' }} type='contained' onClick={() => {}}>
 									<Link className='item__link' to='/auth' onClick={closeNavigationHandleClick}>
 										Login
 									</Link>
 								</Button>
 							)}
+
 							{isLoggedIn && (
 								<span className='navigation__item'>
 									<Link className='item__link' to='/profile' onClick={closeNavigationHandleClick}>
@@ -51,26 +58,27 @@ const Navigation = () => {
 									</Link>
 								</span>
 							)}
+
+							{isLoggedIn && (
+								<Button
+									sx={{ fontWeight: '700', marginTop: '1rem' }}
+									type='contained'
+									onClick={() => {
+										closeNavigationHandleClick()
+										logout()
+									}}>
+									Logout
+								</Button>
+							)}
 						</div>
-						{isLoggedIn && (
-							<Button
-								sx={{ fontWeight: '700' }}
-								type='contained'
-								onClick={() => {
-									closeNavigationHandleClick()
-									logout()
-								}}>
-								Logout
-							</Button>
-						)}
 					</nav>
 				)}
 			</div>
 
 			<div className='header__inner'>
 				<Link className='logo' to='/' onClick={closeNavigationHandleClick}>
-					<Text type='h1' sx={{ textTransform: 'none', fontSize: '1.5rem' }}>
-						Mateusz Pocwiardowski
+					<Text type='h1' sx={{ textTransform: 'none', fontSize: '1.5rem', fontWeight: 400 }}>
+						Mateusz Poćwiardowski
 					</Text>
 				</Link>
 

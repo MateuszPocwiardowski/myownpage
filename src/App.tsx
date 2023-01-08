@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout'
 import HomePage from './pages/HomePage/HomePage'
 import AuthPage from './pages/AuthPage/AuthPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
+import ArticlesPage from './pages/ArticlesPage/ArticlesPage'
 import ArticlePage from './pages/ArticlePage/ArticlePage'
 
 const App = () => {
@@ -25,7 +26,10 @@ const App = () => {
 					{authCtx.isLoggedIn && <ProfilePage />}
 					{!authCtx.isLoggedIn && <Redirect to='/auth' />}
 				</Route>
-				<Route path='/create-article'>
+				<Route path='/blog'>
+					<ArticlesPage />
+				</Route>
+				<Route path='/blog/create-article'>
 					{authCtx.isLoggedIn && <ArticlePage />}
 					{!authCtx.isLoggedIn && <Redirect to='/auth' />}
 				</Route>
