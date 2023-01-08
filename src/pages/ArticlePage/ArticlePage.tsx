@@ -1,9 +1,9 @@
-import CreateArticle from 'components/Articles/CreateArticle/CreateArticle'
+import DetailsArticle from '../../components/Articles/DetailsArticle/DetailsArticle'
 
 const ArticlePage = () => {
 	return (
 		<section>
-			<CreateArticle />
+			<DetailsArticle />
 		</section>
 	)
 }

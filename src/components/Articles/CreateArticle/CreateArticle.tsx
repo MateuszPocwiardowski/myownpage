@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { Box, CircularProgress } from '@mui/material'
+import WestIcon from '@mui/icons-material/West'
 import Input from 'components/common/Input/Input'
 import Text from 'components/common/Text/Text'
 import TextField from 'components/common/TextField/TextField'
 import Button from 'components/common/Button/Button'
 import articles from 'data'
+import './CreateArticle.scss'
 
-import styles from './CreateArticle.styles'
-
-const AuthForm = () => {
+const CreateArticleForm = () => {
 	const history = useHistory()
 
 	const [isLoading, setIsLoading] = useState(false)
@@ -42,20 +42,26 @@ const AuthForm = () => {
 
 	if (isLoading) {
 		return (
-			<div style={styles.progressContainer}>
-				<CircularProgress sx={styles.progress} size={80} thickness={3} />
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
+				<CircularProgress sx={{ marginY: '10rem' }} size={80} thickness={3} />
 			</div>
 		)
 	}
 
 	return (
-		<Box sx={styles.form} component='form'>
-			<Text type='h4' sx={styles.heading}>
-				New article
+		<Box className='form' component='form'>
+			<Link className='form__back' to={`/blog`}>
+				<WestIcon /> Back
+			</Link>
+
+			<Text type='h5' sx={{ color: '#fff', marginY: '1rem' }}>
+				Lorem ipsum dolor sit amet.
 			</Text>
-			<Text sx={styles.caption}>Lorem ipsum dolor sit amet.</Text>
 			<Input
-				sx={styles.input}
+				sx={{
+					width: '100%',
+					borderRadius: '3rem',
+				}}
 				required
 				id='title'
 				label='Title'
@@ -63,9 +69,12 @@ const AuthForm = () => {
 				value={title}
 				onChange={onChangeTitleHandler}
 			/>
-			<Text sx={styles.errorMessage}>{errorTitle}</Text>
+			<Text sx={{ color: 'red' }}>{errorTitle}</Text>
 			<TextField
-				sx={styles.input}
+				sx={{
+					width: '100%',
+					borderRadius: '3rem',
+				}}
 				required
 				id='entry'
 				label='Entry'
@@ -73,12 +82,12 @@ const AuthForm = () => {
 				value={entry}
 				onChange={onChangeEntryHandler}
 			/>
-			<Text sx={styles.errorMessage}>{errorEntry}</Text>
-			<Button sx={styles.button} type='contained' onClick={submitHandler}>
+			<Text sx={{ color: 'red' }}>{errorEntry}</Text>
+			<Button sx={{ marginTop: '.5rem ' }} type='contained' onClick={submitHandler}>
 				Add new article
 			</Button>
 		</Box>
 	)
 }
 
-export default AuthForm
+export default CreateArticleForm

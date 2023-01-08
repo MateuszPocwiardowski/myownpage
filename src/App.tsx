@@ -7,6 +7,7 @@ import AuthPage from './pages/AuthPage/AuthPage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import ArticlesPage from './pages/ArticlesPage/ArticlesPage'
 import ArticlePage from './pages/ArticlePage/ArticlePage'
+import CreateArticlePage from './pages/CreateArticlePage/CreateArticlePage'
 
 const App = () => {
 	const authCtx = useContext(AuthContext)
@@ -26,12 +27,14 @@ const App = () => {
 					{authCtx.isLoggedIn && <ProfilePage />}
 					{!authCtx.isLoggedIn && <Redirect to='/auth' />}
 				</Route>
+				<Route path='/blog/new-article'>
+					<CreateArticlePage />
+				</Route>
+				<Route path='/blog/:id'>
+					<ArticlePage />
+				</Route>
 				<Route path='/blog'>
 					<ArticlesPage />
-				</Route>
-				<Route path='/blog/create-article'>
-					{authCtx.isLoggedIn && <ArticlePage />}
-					{!authCtx.isLoggedIn && <Redirect to='/auth' />}
 				</Route>
 				<Route path='*'>
 					<Redirect to='/' />

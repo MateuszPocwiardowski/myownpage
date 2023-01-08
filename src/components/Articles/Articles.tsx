@@ -1,34 +1,24 @@
 import { useContext } from 'react'
 import AuthContext from '../../store/auth-context'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import articles from 'data'
 import Article from './Article'
-import Text from 'components/common/Text/Text'
 import Button from 'components/common/Button/Button'
-
-import styles from './Articles.styles'
+import './Articles.scss'
 
 const Articles = () => {
 	const AuthCtx = useContext(AuthContext)
 	const { isLoggedIn } = AuthCtx
 
-	const history = useHistory()
-
-	const addNewArticleHandler = () => {
-		history.replace('/create-article')
-	}
-
 	return (
-		<div style={styles.articles}>
+		<div className='articles'>
 			{isLoggedIn && (
-				<Button sx={styles.newArticle} type='contained' onClick={addNewArticleHandler}>
-					New article
+				<Button sx={{ alignSelf: 'center' }} type='contained'>
+					<Link className='articles__new-article-btn' to='/blog/new-article'>
+						New article
+					</Link>
 				</Button>
 			)}
-
-			<Text type='h4' sx={styles.heading}>
-				Articles
-			</Text>
 
 			{articles.map(({ id, title, entry }) => (
 				<Article key={id} id={id} title={title} entry={entry} />

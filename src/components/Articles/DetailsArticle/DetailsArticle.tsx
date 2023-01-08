@@ -1,17 +1,24 @@
+import { Link, useLocation } from 'react-router-dom'
+import WestIcon from '@mui/icons-material/West'
 import Text from 'components/common/Text/Text'
-import Button from 'components/common/Button/Button'
-import styles from '../Articles.styles'
+import './DetailsArticle.scss'
 
-const DetailsArticle = ({ id, title, entry }: { id: number; title: string; entry: string }) => {
+const DetailsArticle = () => {
+	const location = useLocation<{ id?: number; title?: string; entry?: string }>()
+	const { id, title, entry } = location.state
+
 	return (
-		<div key={id} style={styles.article}>
-			<Text type='h5' sx={styles.title}>
-				{title}
-			</Text>
-			<Text sx={styles.entry}>{entry}</Text>
-			<Button type='text' sx={styles.button}>
-				Read more ➞
-			</Button>
+		<div className='article' key={id}>
+			<Link className='article__back' to={`/blog`}>
+				<WestIcon /> Back
+			</Link>
+
+			{!!title && (
+				<Text type='h5' sx={{ color: '#fff', marginY: '1rem' }}>
+					{title}
+				</Text>
+			)}
+			{!!entry && <Text sx={{ textAlign: 'justify' }}>{entry}</Text>}
 		</div>
 	)
 }

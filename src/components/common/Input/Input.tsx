@@ -1,5 +1,4 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
 import { TextField as MaterialUiInput } from '@mui/material'
 import { InputProps } from './Input.types'
 

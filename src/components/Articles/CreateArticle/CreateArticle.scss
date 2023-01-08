@@ -1,0 +1,30 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/font.scss';
+
+.form {
+	max-width: 600px;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	row-gap: 0.5rem;
+
+	&__title {
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	&__back {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		align-self: flex-start;
+		column-gap: 0.5rem;
+		text-decoration: none;
+		color: $color-white;
+	}
+
+	@media (min-width: 600px) {
+		margin: 5rem auto;
+	}
+}
