@@ -119,7 +119,7 @@ const AuthForm = () => {
 
 	if (isLoading) {
 		return (
-			<div style={{ display: 'flex', justifyContent: 'center' }}>
+			<div className='spinner'>
 				<CircularProgress sx={{ marginY: '10rem' }} size={80} thickness={3} />
 			</div>
 		)
@@ -127,10 +127,10 @@ const AuthForm = () => {
 
 	return (
 		<Box className='form' component='form'>
-			<Text type='h4' sx={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '1rem', color: '#fff' }}>
+			<Text type='h4' sx={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
 				{isLogin ? 'Login' : 'Register'}
 			</Text>
-			<Text sx={{ marginBottom: '1rem', color: '#fff' }}>
+			<Text sx={{ marginBottom: '1rem' }}>
 				{isLogin ? 'Lorem ipsum dolor sit amet.' : 'Lorem ipsum dolor sit amet.'}
 			</Text>
 			<Input
@@ -178,7 +178,7 @@ const AuthForm = () => {
 			<Button sx={{ marginTop: '.5rem ' }} type='contained' onClick={submitHandler}>
 				{isLogin ? 'Login' : 'Register'}
 			</Button>
-			<Button sx={{ color: '#fff', textDecoration: 'none' }} type='text' onClick={changeFormTypeHandler}>
+			<Button sx={{ paddingX: 0 }} type='text' onClick={changeFormTypeHandler}>
 				{isLogin ? 'Create new account' : 'Login to exisiting account'}
 			</Button>
 		</Box>

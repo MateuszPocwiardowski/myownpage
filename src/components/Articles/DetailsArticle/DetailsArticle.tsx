@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import WestIcon from '@mui/icons-material/West'
+import Button from 'components/common/Button/Button'
 import Text from 'components/common/Text/Text'
 import './DetailsArticle.scss'
 
@@ -8,13 +9,15 @@ const DetailsArticle = () => {
 	const { id, title, entry } = location.state
 
 	return (
-		<div className='article' key={id}>
-			<Link className='article__back' to={`/blog`}>
-				<WestIcon /> Back
-			</Link>
+		<div className='details-article' key={id}>
+			<Button type='text' sx={{ alignSelf: 'flex-start', padding: 0 }}>
+				<Link className='details-article__back' to={`/blog`}>
+					<WestIcon /> Back
+				</Link>
+			</Button>
 
 			{!!title && (
-				<Text type='h5' sx={{ color: '#fff', marginY: '1rem' }}>
+				<Text type='h5' sx={{ fontSize: '1.5rem', marginY: '1rem' }}>
 					{title}
 				</Text>
 			)}

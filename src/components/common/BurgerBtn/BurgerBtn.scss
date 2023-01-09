@@ -13,7 +13,7 @@
 		height: 3px;
 		width: 20px;
 		margin: auto auto;
-		background-color: $color-white;
+		background-color: $color-gray-800;
 
 		&::before,
 		&::after {
@@ -23,7 +23,7 @@
 			left: 0;
 			height: 100%;
 			width: 100%;
-			background-color: $color-white;
+			background-color: $color-gray-800;
 			transition: transform 0.3s;
 		}
 

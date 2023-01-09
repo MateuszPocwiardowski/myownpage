@@ -11,11 +11,9 @@ const Article = ({ id, title, entry }: { id: number; title: string; entry: strin
 				{title}
 			</Text>
 
-			<Text sx={{ textAlign: 'justify' }}>{entry.length > 100 ? `${entry.substring(0, 250)}...` : entry}</Text>
+			<Text sx={{ textAlign: 'justify', fontWeight: 400 }}>{entry.length > 100 ? `${entry.substring(0, 250)}...` : entry}</Text>
 
-			<Button
-				type='text'
-				sx={{ alignSelf: 'flex-end', color: '#fff', fontSize: '1rem', marginTop: '1rem', textTransform: 'none' }}>
+			<Button type='text' sx={{ alignSelf: 'flex-end', marginTop: '1rem' }}>
 				<Link className='article__read-more-btn' to={{ pathname: `/blog/${id}`, state: { id, title, entry } }}>
 					Read more <EastIcon />
 				</Link>

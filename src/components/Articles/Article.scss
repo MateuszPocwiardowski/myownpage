@@ -4,9 +4,8 @@
 .article {
 	display: flex;
 	flex-direction: column;
-	row-gap: 0.5rem;
-	color: $color-white;
-	font-family: $font-main;
+	color: $color-gray-800;
+	font-weight: 400;
 
 	&__read-more-btn {
 		display: flex;
@@ -14,6 +13,6 @@
 		align-items: center;
 		column-gap: 0.5rem;
 		text-decoration: none;
-		color: $color-white;
+		color: $color-gray-800;
 	}
 }

@@ -7,14 +7,11 @@
 	align-items: flex-start;
 	row-gap: 1rem;
 	padding: 1rem;
-	color: $color-white;
-	font-family: $font-main;
+	color: $color-gray-800;
 	font-size: $font-size-big;
 
 	&__new-article-btn {
 		text-decoration: none;
-		color: $color-gray-900;
-		font-family: $font-main;
-		font-size: $font-size-small;
+		color: $color-gray-200;
 	}
 }

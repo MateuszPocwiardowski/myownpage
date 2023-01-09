@@ -8,8 +8,7 @@ import Button from 'components/common/Button/Button'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import codeToText from 'utils/codeToText'
 import { URLS, ERRORS } from 'constants/index'
-
-import styles from './ProfileForm.styles'
+import './ProfileForm.scss'
 
 const ProfileForm = () => {
 	const history = useHistory()
@@ -82,18 +81,18 @@ const ProfileForm = () => {
 
 	if (isLoading) {
 		return (
-			<div style={styles.progressContainer}>
-				<CircularProgress sx={styles.progress} size={80} thickness={3} />
+			<div className='spinner'>
+				<CircularProgress sx={{ marginY: '10rem' }} size={80} thickness={3} />
 			</div>
 		)
 	}
 
 	return (
 		<Box className='form' component='form'>
-			<Text type='h4' sx={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '1rem', color: '#fff' }}>
+			<Text type='h4' sx={{ fontSize: '1.5rem', fontWeight: 400, marginBottom: '1rem' }}>
 				Change password
 			</Text>
-			<Text sx={{ marginBottom: '1rem', color: '#fff' }}>Lorem ipsum dolor sit amet.</Text>
+			<Text sx={{ marginBottom: '1rem' }}>Lorem ipsum dolor sit amet.</Text>
 			<Input
 				sx={{
 					width: '100%',
@@ -108,7 +107,8 @@ const ProfileForm = () => {
 				onChange={onChangePasswordHandler}
 			/>
 			<Text sx={{ color: 'red' }}>{errorPassword}</Text>
-			<Button type='contained' onClick={submitHandler}>
+
+			<Button sx={{ marginTop: '.5rem ' }} type='contained' onClick={submitHandler}>
 				Change password
 			</Button>
 		</Box>

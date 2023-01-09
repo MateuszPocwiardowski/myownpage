@@ -1,3 +1,4 @@
+@import '../../styles/font.scss';
 @import '../../styles/colors.scss';
 
 .header {
@@ -5,7 +6,7 @@
 
 	&__outer {
 		position: fixed;
-		background-color: $color-gray-900;
+		background-color: $color-gray-400;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -33,29 +34,17 @@
 			&__items {
 				display: flex;
 				flex-direction: column;
-				row-gap: .5rem;
-				font-size: 2rem;
-				font-weight: 400;
+				row-gap: 0.5rem;
 				z-index: 2;
 
 				a {
+					color: inherit;
 					text-decoration: none;
-					font-size: 1rem;
-					color: $color-gray-900;
 				}
 			}
 
 			&__item {
-				color: $color-white;
 				z-index: 2;
-
-				.item__link {
-					color: $color-white;
-					font-size: 1rem;
-					font-weight: 700;
-					line-height: 1.25;
-					text-decoration: none;
-				}
 			}
 		}
 	}
@@ -70,9 +59,6 @@
 		z-index: 2;
 
 		.logo {
-			color: $color-white;
-			font-weight: 400;
-			text-transform: uppercase;
 			text-decoration: none;
 			z-index: 2;
 		}
@@ -80,23 +66,21 @@
 		.navigation {
 			display: flex;
 			align-items: baseline;
-			z-index: 2;
 
 			&__items {
 				list-style: none;
 				display: flex;
 				align-items: baseline;
-				z-index: 2;
 			}
 
-			&__item {
-				color: rgba(0, 0, 0, 0.9);
-				margin: 0 1rem;
+			&__items {
+				display: flex;
+				flex-direction: row;
+				column-gap: 0.5rem;
 				z-index: 2;
 
-				.item__link {
-					color: rgba(0, 0, 0, 0.9);
-					font-weight: 700;
+				a {
+					color: inherit;
 					text-decoration: none;
 				}
 			}

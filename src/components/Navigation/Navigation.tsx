@@ -37,38 +37,31 @@ const Navigation = () => {
 				{isMobile && isOpened && (
 					<nav className='navigation'>
 						<div className='navigation__items'>
-							<span className='navigation__item'>
-								<Link className='item__link' to='/blog' onClick={closeNavigationHandleClick}>
-									Blog
-								</Link>
-							</span>
+							<Button type='text' onClick={closeNavigationHandleClick}>
+								<Link to='/blog'>Blog</Link>
+							</Button>
 
 							{!isLoggedIn && (
-								<Button sx={{ fontWeight: '700', marginTop: '1rem' }} type='contained' onClick={() => {}}>
-									<Link className='item__link' to='/auth' onClick={closeNavigationHandleClick}>
-										Login
-									</Link>
+								<Button type='contained' onClick={closeNavigationHandleClick}>
+									<Link to='/auth'>Login</Link>
 								</Button>
 							)}
 
 							{isLoggedIn && (
-								<span className='navigation__item'>
-									<Link className='item__link' to='/profile' onClick={closeNavigationHandleClick}>
-										Profile
-									</Link>
-								</span>
-							)}
+								<>
+									<Button type='text' onClick={closeNavigationHandleClick}>
+										<Link to='/profile'>Profile</Link>
+									</Button>
 
-							{isLoggedIn && (
-								<Button
-									sx={{ fontWeight: '700', marginTop: '1rem' }}
-									type='contained'
-									onClick={() => {
-										closeNavigationHandleClick()
-										logout()
-									}}>
-									Logout
-								</Button>
+									<Button
+										type='contained'
+										onClick={() => {
+											closeNavigationHandleClick()
+											logout()
+										}}>
+										Logout
+									</Button>
+								</>
 							)}
 						</div>
 					</nav>
@@ -77,7 +70,7 @@ const Navigation = () => {
 
 			<div className='header__inner'>
 				<Link className='logo' to='/' onClick={closeNavigationHandleClick}>
-					<Text type='h1' sx={{ textTransform: 'none', fontSize: '1.5rem', fontWeight: 400 }}>
+					<Text type='h1' sx={{ fontSize: '1.5rem' }}>
 						Mateusz Poćwiardowski
 					</Text>
 				</Link>
@@ -87,26 +80,33 @@ const Navigation = () => {
 				{!isMobile && (
 					<nav className='navigation'>
 						<ul className='navigation__items'>
+							<Button type='text' onClick={closeNavigationHandleClick}>
+								<Link to='/blog'>Blog</Link>
+							</Button>
+
 							{!isLoggedIn && (
-								<li className='navigation__item'>
-									<Link className='item__link' to='/auth'>
-										Login
-									</Link>
-								</li>
+								<Button type='contained' onClick={closeNavigationHandleClick}>
+									<Link to='/auth'>Login</Link>
+								</Button>
 							)}
+
 							{isLoggedIn && (
-								<li className='navigation__item'>
-									<Link className='item__link' to='/profile'>
-										Profile
-									</Link>
-								</li>
+								<>
+									<Button type='text' onClick={closeNavigationHandleClick}>
+										<Link to='/profile'>Profile</Link>
+									</Button>
+
+									<Button
+										type='contained'
+										onClick={() => {
+											closeNavigationHandleClick()
+											logout()
+										}}>
+										Logout
+									</Button>
+								</>
 							)}
 						</ul>
-						{isLoggedIn && (
-							<Button sx={{ marginLeft: '1rem', fontWeight: '700' }} type='contained' onClick={logout}>
-								Logout
-							</Button>
-						)}
 					</nav>
 				)}
 			</div>
