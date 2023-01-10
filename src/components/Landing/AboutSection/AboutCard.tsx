@@ -3,7 +3,6 @@ import { AboutCardProps } from './About.types'
 import './AboutCard.scss'
 
 const AboutCard = ({ icon, title, message }: AboutCardProps) => {
-	console.log(typeof icon)
 	return (
 		<div className='about-card'>
 			{icon}
